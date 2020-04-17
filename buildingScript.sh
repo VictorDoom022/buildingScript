@@ -31,7 +31,7 @@ if [[ $whichBuild -eq 1 ]]; then
 		if [[ $procBuild -eq "yes" ]]; then
 			`. build/envsetup.sh`
 			`lunch carbon_tissot-user`
-			`make carbon -j8`
+			`mka api-stubs-docs && mka hiddenapi-lists-docs && mka system-api-stubs-docs && mka test-api-stubs-docs && make carbon -j8`
 		elif [[ $procBuild -eq "no" ]]; then
 				echo "Okay. All done."
 			else
@@ -68,7 +68,7 @@ elif [[ $whichBuild -eq 2 ]]; then
 		if [[ $procBuild -eq "yes" ]]; then
 			`. build/envsetup.sh`
 			`lunch ancient_tissot-user`
-			`make bacon -j8`
+			`mka api-stubs-docs && mka hiddenapi-lists-docs && mka system-api-stubs-docs && mka test-api-stubs-docs && make bacon -j8`
 		elif [[ $procBuild -eq "no" ]]; then
 				echo "Okay. All done."
 			else
