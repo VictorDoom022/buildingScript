@@ -26,6 +26,17 @@ if [[ $whichBuild -eq 1 ]]; then
 		echo "Clonnin common tree..."
 		`git clone https://github.com/VictorDoom022/android_device_xiaomi_msm8953-common -b lineage-17.0 device/xiaomi/msm8953-common`
 		echo "Common tree clonning complete"
+		echo "Procceed with building? (yes/no)"
+		read procBuild
+		if [[ $procBuild -eq "yes" ]]; then
+			`. build/envsetup.sh`
+			`lunch carbon_tissot-user`
+			`make carbon -j8`
+		elif [[ $procBuild -eq "no" ]]; then
+				echo "Okay. All done."
+			else
+				echo "Invalid Input!"
+		fi
 	fi
 elif [[ $whichBuild -eq 2 ]]; then
 	if [[ -d "ancient" ]]; then
@@ -52,6 +63,17 @@ elif [[ $whichBuild -eq 2 ]]; then
 		echo "Clonnin common tree..."
 		`git clone https://github.com/VictorDoom022/android_device_xiaomi_msm8953-common -b lineage-17.0 device/xiaomi/msm8953-common`
 		echo "Common tree clonning complete"
+		echo "Procceed with building? (yes/no)"
+		read procBuild
+		if [[ $procBuild -eq "yes" ]]; then
+			`. build/envsetup.sh`
+			`lunch ancient_tissot-user`
+			`make bacon -j8`
+		elif [[ $procBuild -eq "no" ]]; then
+				echo "Okay. All done."
+			else
+				echo "Invalid Input!"
+		fi
 	fi
 elif [[ $whichBuild -eq 3 ]]; then
 	echo "Name of build you wanna make?"
