@@ -13,6 +13,7 @@ KERNEL_DIR=$(pwd)
 IMAGE="${KERNEL_DIR}/out/arch/arm64/boot/Image.gz-dtb"
 TANGGAL=$(date +"%Y%m%d-%H")
 export PATH="$(pwd)/clang/bin:$PATH"
+export KBUILD_COMPILER_STRING="$($kernel/clang/bin/clang --version | head -n 1 | perl -pe 's/\((?:http|git).*?\)//gs' | sed -e 's/ */ /g' -e 's/[[:space:]]*$//' -e 's/^.*clang/clang/')"
 export ARCH=arm64
 export KBUILD_BUILD_USER=VictorVanDoom
 function compile() {
