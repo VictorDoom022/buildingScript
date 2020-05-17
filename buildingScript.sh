@@ -25,21 +25,9 @@ if [[ $whichBuild -eq 1 ]]; then
 		echo "Clonning device tree..."
 		`git clone https://github.com/VictorDoom022/android_device_xiaomi_tissot-1 -b cr-8.0 device/xiaomi/tissot`
 		echo "Device tree clonning complete"
-		echo "Clonnin common tree..."
+		echo "Clonning common tree..."
 		`git clone https://github.com/VictorDoom022/android_device_xiaomi_msm8953-common -b lineage-17.0 device/xiaomi/msm8953-common`
 		echo "Common tree clonning complete"
-		echo "Procceed with building? (yes/no)"
-		read procBuild
-		if [[ $procBuild -eq "yes" ]]; then
-			`. build/envsetup.sh`
-			`lunch carbon_tissot-user`
-			`mka api-stubs-docs && mka hiddenapi-lists-docs && mka system-api-stubs-docs && mka test-api-stubs-docs && make carbon -j8`
-		elif [[ $procBuild -eq "no" ]]; then
-				echo "Okay. All done."
-			else
-				echo "Invalid Input!"
-		fi
-	fi
 elif [[ $whichBuild -eq 2 ]]; then
 	if [[ -d "carbon" ]]; then
 		echo "Directory for Carbon already exists!"
@@ -92,18 +80,6 @@ elif [[ $whichBuild -eq 3 ]]; then
 		echo "Clonnin common tree..."
 		`git clone https://github.com/VictorDoom022/android_device_xiaomi_msm8953-common -b lineage-17.0 device/xiaomi/msm8953-common`
 		echo "Common tree clonning complete"
-		echo "Procceed with building? (yes/no)"
-		read procBuild
-		if [[ $procBuild -eq "yes" ]]; then
-			`. build/envsetup.sh`
-			`lunch ancient_tissot-user`
-			`mka api-stubs-docs && mka hiddenapi-lists-docs && mka system-api-stubs-docs && mka test-api-stubs-docs && make bacon -j8`
-		elif [[ $procBuild -eq "no" ]]; then
-				echo "Okay. All done."
-			else
-				echo "Invalid Input!"
-		fi
-	fi
 elif [[ $whichBuild -eq 4 ]]; then
 	if [[ -d "ancient" ]]; then
 		echo "Directory for Ancient already exists!"
